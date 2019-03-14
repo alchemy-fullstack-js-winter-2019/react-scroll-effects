@@ -31,3 +31,31 @@
     transform: rotate(360deg);
   }
 }
+
+.enter {
+  animation: slide-in 1s linear forwards;
+}
+
+.exit {
+  animation: slide-out 1s linear forwards;
+}
+
+@keyframes slide-in {
+  from {
+    margin-left: -10000px;
+  }
+
+  to {
+    margin-left: 0;
+  }
+}
+
+@keyframes slide-out {
+  from {
+    margin-left: 0;
+  }
+
+  to {
+    margin-left: -10000px;
+  }
+}
