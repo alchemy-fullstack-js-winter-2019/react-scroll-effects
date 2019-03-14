@@ -4,7 +4,8 @@ export default class ScrollAnimation extends React.PureComponent {
   ref = React.createRef();
 
   state = {
-    inView: false
+    inView: false,
+    animationEnd: true,
   }
 
   isInView = bounding => {
@@ -14,15 +15,22 @@ export default class ScrollAnimation extends React.PureComponent {
 
   componentDidMount() {
     document.addEventListener('scroll', this.handleScroll)
+    document.addEventListener('animationstart', () => {
+      this.setState({ animationEnd: false })
+    })
+
+    document.addEventListener('animationend', () => {
+      this.setState({ animationEnd: true })
+    })
   }
 
   handleScroll = () => {
     const bounding = this.ref.current.getBoundingClientRect()
     console.log(this.isInView(bounding))
     if (this.isInView(bounding)) {
-      this.setState({ inView: true })
+      this.state.animationEnd && this.setState({ inView: true })
     } else {
-      this.setState({ inView: false })
+      this.state.animationEnd && this.setState({ inView: false })
     }
   }
 

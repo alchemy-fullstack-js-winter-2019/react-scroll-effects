@@ -33,11 +33,11 @@
 }
 
 .enter {
-  animation: slide-in 1s linear forwards;
+  animation: slide-in 5s linear forwards;
 }
 
 .exit {
-  animation: slide-out 1s linear forwards;
+  animation: slide-out 5s linear forwards;
 }
 
 @keyframes slide-in {
